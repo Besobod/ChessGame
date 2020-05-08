@@ -86,8 +86,9 @@ namespace ChessGame
                 case FigureName.Pawn:
                     {
                         return (figure.Color == Color.White ? dy == -1 : dy == 1)
-                            && (dx == 0 
-                            || (Board[destination.Item1, destination.Item2] != null && (dx==1 || dx==-1)));
+                            && ((dx == 0 && Board[destination.Item1, destination.Item2] == null)
+                            || (Board[destination.Item1, destination.Item2] != null && (dx == 1 || dx == -1))
+                            );
                     }
                 case FigureName.Knight:
                     {
@@ -160,9 +161,10 @@ namespace ChessGame
             var enemyColor = PlayerTurn == Color.White ? Color.Black : Color.White;
             if (DeadFigures[enemyColor].Count > 0)
             {
-                var deadFigure = DeadFigures[enemyColor].Where(figure => figure.Name.ToString() == name).First();
-                if (deadFigure != null)
+                var deadFigures = DeadFigures[enemyColor].Where(figure => figure.Name.ToString() == name);
+                if (deadFigures != null)
                 {
+                    var deadFigure = deadFigures.First();
                     deadFigure.ChangeSide();
                     Board[position.Item1, position.Item2] = deadFigure;
                     DeadFigures[enemyColor].Remove(deadFigure);
