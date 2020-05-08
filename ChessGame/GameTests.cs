@@ -14,7 +14,6 @@ namespace ChessGame
         public void PawnMovesCorrectly()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackPawn = new Figure(FigureName.Pawn,Color.Black);
             var whitePawn = new Figure(FigureName.Pawn, Color.White);
             game.Board[3, 3] = blackPawn;
@@ -33,7 +32,6 @@ namespace ChessGame
         public void KnightMovesCorrectly()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackKnight = new Figure(FigureName.Knight, Color.Black);
             game.Board[3, 3] = blackKnight;
             game.SelectedFigureCoordinates = Tuple.Create(3, 3);
@@ -56,7 +54,6 @@ namespace ChessGame
         public void BishopMovesCorrectly()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackBishop = new Figure(FigureName.Bishop, Color.Black);
             game.Board[3, 3] = blackBishop;
             game.SelectedFigureCoordinates = Tuple.Create(3, 3);
@@ -73,7 +70,6 @@ namespace ChessGame
         public void RookMovesCorrectly()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackRook = new Figure(FigureName.Rook, Color.Black);
             game.Board[3, 3] = blackRook;
             game.SelectedFigureCoordinates = Tuple.Create(3, 3);
@@ -89,7 +85,6 @@ namespace ChessGame
         public void QueenMovesCorrectly()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackQueen = new Figure(FigureName.Queen, Color.Black);
             game.Board[3, 3] = blackQueen;
             game.SelectedFigureCoordinates = Tuple.Create(3, 3);
@@ -107,7 +102,6 @@ namespace ChessGame
         public void KingMovesCorrectly()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackKing = new Figure(FigureName.King, Color.Black);
             game.Board[3, 3] = blackKing;
             game.SelectedFigureCoordinates = Tuple.Create(3, 3);
@@ -125,7 +119,6 @@ namespace ChessGame
         public void FiguresDontReplaceAllies()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackKing = new Figure(FigureName.King, Color.Black);
             var blackQueen = new Figure(FigureName.Queen, Color.Black);
             game.Board[3, 3] = blackKing;
@@ -138,7 +131,6 @@ namespace ChessGame
         public void FiguresDontMoveThrough()
         {
             var game = new Game();
-            game.Board = new Figure[8, 8];
             var blackKing = new Figure(FigureName.King, Color.Black);
             var blackQueen = new Figure(FigureName.Queen, Color.Black);
             game.Board[3, 3] = blackQueen;
@@ -149,6 +141,26 @@ namespace ChessGame
             var blackBishop = new Figure(FigureName.Bishop, Color.Black);
             game.Board[3, 2] = blackBishop;
             game.SelectedFigureCoordinates = Tuple.Create(3, 2);
+        }
+
+        [Test]
+        public void FiguresCantSpawnOnOthers()
+        {
+            var game = new Game();
+            var whiteQueen = new Figure(FigureName.Queen, Color.White);
+            var blackPawn = new Figure(FigureName.Pawn, Color.Black);
+            var blackBishop = new Figure(FigureName.Bishop, Color.Black);
+            game.SelectedFigureCoordinates = Tuple.Create(3, 3);
+            game.Board[3, 3] = whiteQueen;
+            game.Board[4, 3] = blackPawn;
+            game.Board[0, 0] = blackBishop;
+            game.MoveFigure(Tuple.Create(4, 3));
+            game.SelectedFigureCoordinates = Tuple.Create(0, 0);
+            game.MoveFigure(Tuple.Create(1, 1));
+            game.SpawnFigure(Tuple.Create(1, 1), "Pawn");
+            game.SpawnFigure(Tuple.Create(4, 3), "Pawn");
+            Assert.AreEqual(game.Board[1, 1].Name, FigureName.Bishop);
+            Assert.AreEqual(game.Board[4, 3].Name, FigureName.Queen);
         }
     }
 }

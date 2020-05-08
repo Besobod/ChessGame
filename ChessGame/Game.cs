@@ -42,6 +42,16 @@ namespace ChessGame
         public Figure[,] Board;
         public Tuple<int, int> SelectedFigureCoordinates;
         Dictionary<Color, List<Figure>> DeadFigures;
+
+        public Game()
+        {
+            Board = new Figure[8, 8];
+            DeadFigures = new Dictionary<Color, List<Figure>>();
+            DeadFigures.Add(Color.Black, new List<Figure>());
+            DeadFigures.Add(Color.White, new List<Figure>());
+            PlayerTurn = Color.White;
+        }
+
         public bool GameFinished { get; private set; }
 
         public Color PlayerTurn { get; private set; }
@@ -145,6 +155,8 @@ namespace ChessGame
         }
         public void SpawnFigure(Tuple<int,int> position,string name)
         {
+            if (Board[position.Item1, position.Item2] != null)
+                return;
             var enemyColor = PlayerTurn == Color.White ? Color.Black : Color.White;
             if (DeadFigures[enemyColor].Count > 0)
             {
@@ -161,12 +173,6 @@ namespace ChessGame
 
         public void InitializeGame()
         {
-            Board = new Figure[8, 8];
-            DeadFigures = new Dictionary<Color, List<Figure>>();
-            DeadFigures.Add(Color.Black, new List<Figure>());
-            DeadFigures.Add(Color.White, new List<Figure>());
-            PlayerTurn = Color.White;
-
             for (int i = 0; i < Board.GetLength(1); i++)
                 Board[6, i] = new Figure(FigureName.Pawn, Color.White);
             Board[7,0]= new Figure(FigureName.Rook, Color.White);
