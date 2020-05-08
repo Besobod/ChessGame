@@ -18,6 +18,7 @@ namespace ChessGame
         {
             InitializeComponent();
         }
+
         void RedrawBoard()
         {
             for(int i=0; i<Game.Board.GetLength(0);i++)

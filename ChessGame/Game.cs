@@ -3,40 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 namespace ChessGame
 {
-     public enum FigureName
-    {
-        Pawn,
-        Knight,
-        Bishop,
-        Rook,
-        Queen,
-        King
-
-    }
-
-    public enum Color
-    {
-        White,
-        Black,
-    }
-
-    public class Figure
-    {
-        public FigureName Name { get; private set; }
-        public Color Color;
-
-        public Figure(FigureName name, Color color)
-        {
-            Name = name;
-            Color = color;
-        }
-
-        public void ChangeSide()
-        {
-            Color = Color == Color.White ? Color.Black : Color.White;
-        }
-    }
-
     public class Game
     {
         public Figure[,] Board;
@@ -114,6 +80,7 @@ namespace ChessGame
             }
             return true;
         }
+
         bool NoFiguresInWay(Tuple<int,int> destination)
         {
             var dy = destination.Item1 - SelectedFigureCoordinates.Item1;
@@ -154,6 +121,7 @@ namespace ChessGame
             DeadFigures[figure.Color].Add(figure);
             Board[figurePosition.Item1, figurePosition.Item2] = null;
         }
+
         public void SpawnFigure(Tuple<int,int> position,string name)
         {
             if (Board[position.Item1, position.Item2] != null)
@@ -162,7 +130,7 @@ namespace ChessGame
             if (DeadFigures[enemyColor].Count > 0)
             {
                 var deadFigures = DeadFigures[enemyColor].Where(figure => figure.Name.ToString() == name);
-                if (deadFigures != null)
+                if (deadFigures.Count()>0)
                 {
                     var deadFigure = deadFigures.First();
                     deadFigure.ChangeSide();
