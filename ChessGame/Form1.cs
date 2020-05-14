@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChessGame
@@ -26,30 +19,11 @@ namespace ChessGame
                 {
                     var pictureBox = ChessBoard.GetControlFromPosition(j,i) as PictureBox;
                     if (Game.Board[i, j] != null)
-                        pictureBox.Image = AssociateSpriteWithFigure(Game.Board[i, j]);
+                        pictureBox.Image = Game.Board[i, j].FigureSprite;
                     else
                         pictureBox.Image = null;
                 }
-        }
-
-        Bitmap AssociateSpriteWithFigure(Figure figure)
-        {
-            switch(figure.Name)
-            {
-                case FigureName.Pawn:
-                        return figure.Color == Color.White ? Properties.Resources.whitePawn : Properties.Resources.blackPawn;
-                case FigureName.Knight:
-                    return figure.Color == Color.White ? Properties.Resources.whiteKnight : Properties.Resources.blackKnight;
-                case FigureName.Bishop:
-                    return figure.Color == Color.White ? Properties.Resources.whiteBishop : Properties.Resources.blackBishop;
-                case FigureName.Rook:
-                    return figure.Color == Color.White ? Properties.Resources.whiteRook : Properties.Resources.blackRook;
-                case FigureName.Queen:
-                    return figure.Color == Color.White ? Properties.Resources.whiteQueen : Properties.Resources.blackQueen;
-                case FigureName.King:
-                    return figure.Color == Color.White ? Properties.Resources.whiteKing : Properties.Resources.blackKing;
-            }
-            return null;
+            PlayerTurnLabel.Text = "Player Turn:" + Game.PlayerTurn.ToString();
         }
 
         private void ChessTile_MouseClick(object sender, MouseEventArgs e)
@@ -73,8 +47,8 @@ namespace ChessGame
                 {
                     MessageBox.Show(Game.PlayerTurn.ToString() + " player lost the game!");
                     ChessBoard.Enabled = false;
+                    PlayerTurnLabel.Text = @"Press ""Start game"" button";
                 }
-                
             }
         }
 

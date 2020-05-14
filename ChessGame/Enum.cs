@@ -6,17 +6,6 @@ using System.Threading.Tasks;
 
 namespace ChessGame
 {
-    public enum FigureName
-    {
-        Pawn,
-        Knight,
-        Bishop,
-        Rook,
-        Queen,
-        King
-
-    }
-
     public enum Color
     {
         White,

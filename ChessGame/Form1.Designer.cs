@@ -96,6 +96,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.figureList = new System.Windows.Forms.ListBox();
+            this.PlayerTurnLabel = new System.Windows.Forms.Label();
             this.ChessBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChessTileA8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChessTileB8)).BeginInit();
@@ -166,7 +167,6 @@
             // 
             // ChessBoard
             // 
-            this.ChessBoard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChessBoard.BackColor = System.Drawing.Color.Transparent;
             this.ChessBoard.BackgroundImage = global::ChessGame.Properties.Resources.ChessBoard;
             this.ChessBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -1040,31 +1040,43 @@
             // startGameToolStripMenuItem
             // 
             this.startGameToolStripMenuItem.Name = "startGameToolStripMenuItem";
-            this.startGameToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.startGameToolStripMenuItem.Size = new System.Drawing.Size(96, 26);
             this.startGameToolStripMenuItem.Text = "Start game";
             this.startGameToolStripMenuItem.Click += new System.EventHandler(this.startGameToolStripMenuItem_Click);
             // 
             // figureList
             // 
+            this.figureList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.figureList.FormattingEnabled = true;
-            this.figureList.ItemHeight = 16;
+            this.figureList.ItemHeight = 25;
             this.figureList.Items.AddRange(new object[] {
-            "None",
+            "Choose figure to spawn",
             "Pawn",
             "Knight",
             "Bishop",
             "Rook",
             "Queen"});
-            this.figureList.Location = new System.Drawing.Point(977, 128);
+            this.figureList.Location = new System.Drawing.Point(948, 128);
             this.figureList.Name = "figureList";
-            this.figureList.Size = new System.Drawing.Size(120, 100);
+            this.figureList.Size = new System.Drawing.Size(220, 154);
             this.figureList.TabIndex = 3;
+            // 
+            // PlayerTurnLabel
+            // 
+            this.PlayerTurnLabel.AutoSize = true;
+            this.PlayerTurnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PlayerTurnLabel.Location = new System.Drawing.Point(533, 45);
+            this.PlayerTurnLabel.Name = "PlayerTurnLabel";
+            this.PlayerTurnLabel.Size = new System.Drawing.Size(235, 25);
+            this.PlayerTurnLabel.TabIndex = 4;
+            this.PlayerTurnLabel.Text = "Press \"Start game\" button";
             // 
             // ChessGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 977);
+            this.Controls.Add(this.PlayerTurnLabel);
             this.Controls.Add(this.figureList);
             this.Controls.Add(this.ChessBoard);
             this.Controls.Add(this.menuStrip1);
@@ -1214,6 +1226,7 @@
         private System.Windows.Forms.PictureBox ChessTileB7;
         private System.Windows.Forms.PictureBox ChessTileA7;
         private System.Windows.Forms.ListBox figureList;
+        private System.Windows.Forms.Label PlayerTurnLabel;
     }
 }
 

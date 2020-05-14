@@ -1,0 +1,17 @@
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\NUnit3.TestAdapter.dll
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\NUnit3.TestAdapter.pdb
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\nunit.engine.dll
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\nunit.engine.api.dll
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\ChessGame.exe.config
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\ChessGame.exe
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\ChessGame.pdb
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\nunit.framework.dll
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\nunit.framework.pdb
+C:\Users\fagal\source\repos\ChessGame\ChessGame\bin\Release\nunit.framework.xml
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.csprojAssemblyReference.cache
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.ChessGameForm.resources
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.Properties.Resources.resources
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.csproj.GenerateResource.cache
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.csproj.CopyComplete
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.exe
+C:\Users\fagal\source\repos\ChessGame\ChessGame\obj\Release\ChessGame.pdb
